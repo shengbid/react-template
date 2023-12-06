@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import axios from "axios"
+import "./bootstrap.css"
+// import Search from "./githupSearch/index"
+import Link from "./RouterComponents/Link/index"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  getStudent = () => {
+    axios.get("http://localhost:3000/api1/search/users2").then(
+      (response) => {
+        console.log(response.data)
+      },
+      (err) => {
+        console.log("err")
+      }
+    )
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* <div>
+          <button onClick={this.getStudent}>点我获取数据</button>
+        </div> */}
+        {/* <Search /> */}
+        <Link />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
